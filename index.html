@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Para o Amor da Minha Vida 💖</h1>
+        <h2>Agatha 💖</h2>
+        <p>
+            Desde que você entrou na minha vida, tudo ficou mais bonito.
+            Cada momento ao seu lado é especial e eu sou muito grato por ter você comigo.
+        </p>
+    </header>
+
+    <!-- GALERIA -->
+    <section class="galeria">
+        <div class="foto">
+            <img src="Imagens/foto3.png" alt="Nossa Foto 1">
+        </div>
+
+        <div class="foto">
+            <img src="Imagens/foto6.png" alt="Nossa Foto 2">
+        </div>
+
+        <div class="foto">
+            <img src="Imagens/foto4.png" alt="Nossa Foto 3">
+        </div>
+    </section>
+
+    <section class="galeria">
+        <div class="foto">
+            <img src="Imagens/foto1.png" alt="Nossa Foto 4">
+        </div>
+
+        <div class="foto">
+            <img src="Imagens/foto2.png" alt="Nossa Foto 5">
+        </div>
+
+        <div class="foto">
+            <img src="Imagens/foto5.png" alt="Nossa Foto 6">
+        </div>
+    </section>
+
+    <!-- MENSAGEM -->
+    <section class="mensagem">
+        <h2>Nossa Historia 💌</h2>
+
+        <p>
+            Meu amor,
+
+Quem diria que tudo começou lá em 2023, no Instagram… entre mensagens simples de “feliz aniversário”, conversas rápidas, quase como se o destino estivesse só ensaiando o que ainda estava por vir. E então chegou o dia 16 de dezembro de 2025. Eu, Gustavo, respondi aquela foto com a brincadeira: “qual fit usaria pra um date com o Neliz?”… Eu não fazia ideia de que aquela resposta, tão pequena, ia se transformar na maior e mais linda história da minha vida.
+
+Desde aquele dia, nossas conversas nunca mais foram as mesmas. Era música parecida, gostos parecidos, loucuras parecidas, comidas parecidas… parecia que Deus tinha feito um “Ctrl C + Ctrl V” de alma. Era tudo tão leve, tão natural… como se eu tivesse te encontrado depois de muito tempo procurando sem saber que estava procurando você.
+        </p>
+
+        <p>
+           E então chegou o dia 30 de dezembro. Nosso primeiro encontro. A feira, o pastel… algo tão simples, mas que se tornou o dia mais importante da minha vida. Porque foi ali que eu vi o seu sorriso de perto. Foi ali que eu me perdi nos seus olhos. Você, linda, maravilhosa, com aquele vestido branco e acessórios dourados… parecia cena de filme. Meu coração quase saiu pela boca. Eu estava completamente apaixonado — não só pela sua beleza, mas pelo seu jeito de falar, pelo seu jeito de pensar, pela mulher incrível que você é.
+
+Depois disso, cada encontro, cada saída, cada conversa só confirmou o que eu já sentia. Tocamos no assunto de algo sério, eu conheci seus pais, fomos construindo algo de verdade… com calma, com respeito, com carinho. E o nosso primeiro beijo… depois de tantos dias criando expectativa… no Shopping Metrô Itaquera, no Jeronimo Burger… foi como se o mundo tivesse parado por alguns segundos. Ali eu tive certeza: era você.
+        </p>
+
+        <p>
+            Hoje eu me sinto apaixonado, completo, realizado. Você trouxe cor para os meus dias, trouxe paz para o meu coração e um sorriso constante para o meu rosto. Amar você é fácil. Estar com você é leve. Pensar em você é inevitável.
+
+E é por tudo isso que, nesse dia 14 de março, eu estou aqui, com o coração aberto e cheio de amor, para te perguntar:
+
+            <strong>Você aceita namorar comigo?</strong>
+
+            Eu prometo cuidar de você, te respeitar, te apoiar nos dias difíceis e celebrar cada conquista ao seu lado. Prometo continuar escolhendo você todos os dias.
+
+Porque, entre todas as respostas que eu poderia ter dado naquela foto… a melhor decisão da minha vida foi ter puxado assunto com você.
+
+Eu te amo. ❤️
+        </p>
+    </section>
+
+    <footer>
+        Feito com amor - Gustavo 💕
+    </footer>
+
+    <!-- 🎵 Áudio -->
+    <audio id="musica" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 🎶 Botão -->
+    <button id="btnMusica">🎵 Tocar Música</button>
+
+    <script>
+        const audio = document.getElementById("musica");
+        const botao = document.getElementById("btnMusica");
+
+        botao.addEventListener("click", function () {
+            if (audio.paused) {
+                audio.play();
+                botao.textContent = "⏸️ Pausar Música";
+            } else {
+                audio.pause();
+                botao.textContent = "🎵 Tocar Música";
+            }
+        });
+    </script>
+
+</body>
+</html>
