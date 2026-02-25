@@ -31,7 +31,7 @@ p {
 }
 
 /* Galeria */
-.imagens {
+.galeria {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -40,7 +40,7 @@ p {
 }
 
 /* Card das fotos */
-.imagens {
+.fotos {
     width: 100%;
     max-width: 280px;
     height: 320px;
@@ -165,4 +165,5 @@ footer {
     }
 
 }
+
 
