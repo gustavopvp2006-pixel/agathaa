@@ -4,7 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Agatha 💕</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ffe6f0, #fff5f9);
+            text-align: center;
+            color: #5a2a4d;
+        }
+
+        header {
+            padding: 30px 20px;
+        }
+
+        /* ===== CARROSSEL ===== */
+
+        .galeria {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .carrossel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carrossel-track img {
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 15px;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 182, 193, 0.8);
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* ===== MENSAGEM ===== */
+
+        .mensagem {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        #btnSim {
+            background: #ff69b4;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        #btnSim:hover {
+            background: #ff1493;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        #btnMusica {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff69b4;
+            border: none;
+            padding: 12px 18px;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        /* ===== CONFETE ===== */
+
+        .confete {
+            position: fixed;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            animation: cair linear forwards;
+        }
+
+        @keyframes cair {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -19,17 +127,25 @@
         </p>
     </header>
     
-    <!-- GALERIA -->
+    <!-- CARROSSEL -->
     <section class="galeria">
-        <div class="foto"><img src="imagens/foto1.png" alt=""></div>
-        <div class="foto"><img src="imagens/foto2.png" alt=""></div>
-        <div class="foto"><img src="imagens/foto3.png" alt=""></div>
-        <div class="foto"><img src="imagens/foto4.png" alt=""></div>
-        <div class="foto"><img src="imagens/foto5.png" alt=""></div>
-        <div class="foto"><img src="imagens/foto6.png" alt=""></div>
+
+        <button class="prev">&#10094;</button>
+
+        <div class="carrossel-track">
+            <img src="imagens/foto1.png">
+            <img src="imagens/foto2.png">
+            <img src="imagens/foto3.png">
+            <img src="imagens/foto4.png">
+            <img src="imagens/foto5.png">
+            <img src="imagens/foto6.png">
+        </div>
+
+        <button class="next">&#10095;</button>
+
     </section>
 
-    <!-- MENSAGEM -->
+    <!-- MENSAGEM (TEXTO INTACTO) -->
     <section class="mensagem">
         <h2>Nossa Historia 💌</h2>
 
@@ -79,25 +195,67 @@
     <!-- 🎶 Botão Música -->
     <button id="btnMusica">🎵 Tocar Música</button>
 
-    <!-- SCRIPT MÚSICA -->
+    <!-- SCRIPT GERAL -->
     <script>
-        const audio = document.getElementById("musica");
-        const botao = document.getElementById("btnMusica");
 
-        botao.addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play();
-                botao.textContent = "⏸️ Pausar Música";
-            } else {
-                audio.pause();
-                botao.textContent = "🎵 Tocar Música";
-            }
-        });
-    </script>
-
-    <!-- SCRIPT PEDIDO + CONFETE -->
-    <script>
         document.addEventListener("DOMContentLoaded", function () {
+
+            /* ===== CARROSSEL ===== */
+
+            const track = document.querySelector('.carrossel-track');
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.next');
+            const prevButton = document.querySelector('.prev');
+
+            let currentIndex = 0;
+            let autoPlayInterval;
+
+            function updateSlide() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlide();
+                resetAutoPlay();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlide();
+                resetAutoPlay();
+            });
+
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateSlide();
+                }, 4000);
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
+            }
+
+            startAutoPlay();
+
+            /* ===== MÚSICA ===== */
+
+            const audio = document.getElementById("musica");
+            const botao = document.getElementById("btnMusica");
+
+            botao.addEventListener("click", function () {
+                if (audio.paused) {
+                    audio.play();
+                    botao.textContent = "⏸️ Pausar Música";
+                } else {
+                    audio.pause();
+                    botao.textContent = "🎵 Tocar Música";
+                }
+            });
+
+            /* ===== PEDIDO + CONFETE ===== */
 
             const btnSim = document.getElementById("btnSim");
             const resposta = document.getElementById("resposta");
@@ -132,31 +290,8 @@
             }
 
         });
+
     </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
