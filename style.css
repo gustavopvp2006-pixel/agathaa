@@ -31,7 +31,7 @@ p {
 }
 
 /* Galeria */
-.galeria {
+.imagens {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -163,4 +163,5 @@ footer {
         font-size: 13px;
         padding: 10px 16px;
     }
+
 }
