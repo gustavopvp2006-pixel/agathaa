@@ -32,34 +32,21 @@ p {
 
 /* Galeria */
 .galeria {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* corrigido */
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
     gap: 20px;
-    padding: 30px 10px;
+    padding: 20px;
 }
 
-/* Card das fotos */
-.foto { /* corrigido (era .fotos) */
+.foto {
     width: 100%;
-    max-width: 280px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.foto:hover {
-    transform: scale(1.05);
 }
 
 .foto img {
     width: 100%;
-    height: auto; /* MUITO IMPORTANTE - corrigido */
-    display: block;
+    height: 250px;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 /* Mensagem */
@@ -166,6 +153,7 @@ footer {
     }
 
 }
+
 
 
 
