@@ -1,21 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* ================================= */
-    /* ===== CARROSSEL ===== */
-    /* ================================= */
+    /* ====================== */
+    /* CARROSSEL COMPLETO */
+    /* ====================== */
 
     const track = document.querySelector('.carrossel-track');
     const slides = document.querySelectorAll('.carrossel-track img');
     const nextButton = document.querySelector('.next');
     const prevButton = document.querySelector('.prev');
+    const galeria = document.querySelector('.galeria');
 
     if (track && slides.length > 0) {
 
         let currentIndex = 0;
-        let autoPlayInterval;
+        let autoPlay;
+
+        /* Criar Dots */
+        const dotsContainer = document.createElement("div");
+        dotsContainer.classList.add("dots");
+        galeria.appendChild(dotsContainer);
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (index === 0) dot.classList.add("active");
+
+            dot.addEventListener("click", () => {
+                currentIndex = index;
+                updateSlide();
+                resetAutoPlay();
+            });
+
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll(".dot");
 
         function updateSlide() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[currentIndex].classList.add("active");
+
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[currentIndex].classList.add("active");
         }
 
         function nextSlide() {
@@ -28,114 +56,96 @@ document.addEventListener("DOMContentLoaded", function () {
             updateSlide();
         }
 
-        if (nextButton) {
-            nextButton.addEventListener("click", () => {
-                nextSlide();
-                resetAutoPlay();
-            });
-        }
+        nextButton?.addEventListener("click", () => {
+            nextSlide();
+            resetAutoPlay();
+        });
 
-        if (prevButton) {
-            prevButton.addEventListener("click", () => {
-                prevSlide();
-                resetAutoPlay();
-            });
-        }
+        prevButton?.addEventListener("click", () => {
+            prevSlide();
+            resetAutoPlay();
+        });
 
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 4000);
+            autoPlay = setInterval(nextSlide, 4000);
         }
 
         function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
+            clearInterval(autoPlay);
             startAutoPlay();
         }
 
-        startAutoPlay();
+        galeria.addEventListener("mouseenter", () => clearInterval(autoPlay));
+        galeria.addEventListener("mouseleave", startAutoPlay);
 
-        /* ===== Swipe Mobile ===== */
+        /* Swipe */
 
         let startX = 0;
-        let isDragging = false;
 
-        track.addEventListener("touchstart", (e) => {
+        track.addEventListener("touchstart", e => {
             startX = e.touches[0].clientX;
-            isDragging = true;
         });
 
-        track.addEventListener("touchend", (e) => {
-            if (!isDragging) return;
-
-            let endX = e.changedTouches[0].clientX;
-            let diff = startX - endX;
-
-            if (diff > 50) {
-                nextSlide();
-            } else if (diff < -50) {
-                prevSlide();
-            }
-
+        track.addEventListener("touchend", e => {
+            let diff = startX - e.changedTouches[0].clientX;
+            if (diff > 50) nextSlide();
+            if (diff < -50) prevSlide();
             resetAutoPlay();
-            isDragging = false;
         });
 
+        slides[0].classList.add("active");
+        startAutoPlay();
     }
 
-    /* ================================= */
-    /* ===== BOTÃO DE MÚSICA ===== */
-    /* ================================= */
+    /* ====================== */
+    /* BOTÃO MÚSICA */
+    /* ====================== */
 
     const audio = document.getElementById("musica");
-    const botaoMusica = document.getElementById("btnMusica");
+    const botao = document.getElementById("btnMusica");
 
-    if (botaoMusica && audio) {
-        botaoMusica.addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play();
-                botaoMusica.textContent = "⏸️ Pausar Música";
-            } else {
-                audio.pause();
-                botaoMusica.textContent = "🎵 Tocar Música";
-            }
-        });
-    }
+    botao?.addEventListener("click", function () {
+        if (audio.paused) {
+            audio.play();
+            botao.textContent = "⏸️ Pausar Música";
+        } else {
+            audio.pause();
+            botao.textContent = "🎵 Tocar Música";
+        }
+    });
 
-    /* ================================= */
-    /* ===== BOTÃO SIM + CONFETE ===== */
-    /* ================================= */
+    /* ====================== */
+    /* BOTÃO SIM + CORAÇÕES */
+    /* ====================== */
 
     const btnSim = document.getElementById("btnSim");
     const resposta = document.getElementById("resposta");
 
-    if (btnSim && resposta) {
-        btnSim.addEventListener("click", () => {
+    btnSim?.addEventListener("click", () => {
 
-            resposta.innerHTML = "💖 Agora oficialmente somos NAMORADOS 💖";
-            btnSim.style.display = "none";
+        resposta.innerHTML = "💖 Agora oficialmente somos NAMORADOS 💖";
+        btnSim.style.display = "none";
 
-            for (let i = 0; i < 120; i++) {
-                criarConfete();
-            }
+        for (let i = 0; i < 80; i++) {
+            criarCoracao();
+        }
 
-        });
-    }
+    });
 
-    function criarConfete() {
-        const confete = document.createElement("div");
-        confete.classList.add("confete");
+    function criarCoracao() {
+        const coracao = document.createElement("div");
+        coracao.classList.add("coracao");
+        coracao.innerHTML = "💖";
 
-        confete.style.left = Math.random() * 100 + "vw";
-        confete.style.backgroundColor =
-            `hsl(${Math.random() * 360}, 100%, 60%)`;
+        coracao.style.left = Math.random() * 100 + "vw";
+        coracao.style.fontSize = (Math.random() * 20 + 15) + "px";
+        coracao.style.animationDuration = (Math.random() * 2 + 3) + "s";
 
-        confete.style.animationDuration =
-            (Math.random() * 2 + 2) + "s";
-
-        document.body.appendChild(confete);
+        document.body.appendChild(coracao);
 
         setTimeout(() => {
-            confete.remove();
-        }, 3000);
+            coracao.remove();
+        }, 4000);
     }
 
 });
