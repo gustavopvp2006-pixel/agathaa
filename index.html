@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Agatha  💕</title>
+    <title>Para Agatha 💕</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,16 +20,15 @@
     </header>
     
     <!-- GALERIA -->
-<section class="galeria">
-  
-  <div class="foto"><img src="imagens/foto1.png" alt=""></div>
-  <div class="foto"><img src="imagens/foto2.png" alt=""></div>
-  <div class="foto"><img src="imagens/foto3.png" alt=""></div>
-  <div class="foto"><img src="imagens/foto4.png" alt=""></div>
-  <div class="foto"><img src="imagens/foto5.png" alt=""></div>
-  <div class="foto"><img src="imagens/foto6.png" alt=""></div>
+    <section class="galeria">
+        <div class="foto"><img src="imagens/foto1.png" alt=""></div>
+        <div class="foto"><img src="imagens/foto2.png" alt=""></div>
+        <div class="foto"><img src="imagens/foto3.png" alt=""></div>
+        <div class="foto"><img src="imagens/foto4.png" alt=""></div>
+        <div class="foto"><img src="imagens/foto5.png" alt=""></div>
+        <div class="foto"><img src="imagens/foto6.png" alt=""></div>
+    </section>
 
-</section>
     <!-- MENSAGEM -->
     <section class="mensagem">
         <h2>Nossa Historia 💌</h2>
@@ -37,29 +36,34 @@
         <p>
             Meu amor,
 
-Quem diria que tudo começou lá em 2023, no Instagram… entre mensagens simples de “feliz aniversário”, conversas rápidas, quase como se o destino estivesse só ensaiando o que ainda estava por vir. E então chegou o dia 16 de dezembro de 2025. Eu, Gustavo, respondi aquela foto com a brincadeira: “qual fit usaria pra um date com o Neliz?”… Eu não fazia ideia de que aquela resposta, tão pequena, ia se transformar na maior e mais linda história da minha vida.
+            Quem diria que tudo começou lá em 2023, no Instagram… entre mensagens simples de “feliz aniversário”, conversas rápidas, quase como se o destino estivesse só ensaiando o que ainda estava por vir. E então chegou o dia 16 de dezembro de 2025. Eu, Gustavo, respondi aquela foto com a brincadeira: “qual fit usaria pra um date com o Neliz?”… Eu não fazia ideia de que aquela resposta, tão pequena, ia se transformar na maior e mais linda história da minha vida.
 
-Desde aquele dia, nossas conversas nunca mais foram as mesmas. Era música parecida, gostos parecidos, loucuras parecidas, comidas parecidas… parecia que Deus tinha feito um “Ctrl C + Ctrl V” de alma. Era tudo tão leve, tão natural… como se eu tivesse te encontrado depois de muito tempo procurando sem saber que estava procurando você.
+            Desde aquele dia, nossas conversas nunca mais foram as mesmas. Era música parecida, gostos parecidos, loucuras parecidas, comidas parecidas… parecia que Deus tinha feito um “Ctrl C + Ctrl V” de alma.
         </p>
 
         <p>
-           E então chegou o dia 30 de dezembro. Nosso primeiro encontro. A feira, o pastel… algo tão simples, mas que se tornou o dia mais importante da minha vida. Porque foi ali que eu vi o seu sorriso de perto. Foi ali que eu me perdi nos seus olhos. Você, linda, maravilhosa, com aquele vestido branco e acessórios dourados… parecia cena de filme. Meu coração quase saiu pela boca. Eu estava completamente apaixonado — não só pela sua beleza, mas pelo seu jeito de falar, pelo seu jeito de pensar, pela mulher incrível que você é.
+            E então chegou o dia 30 de dezembro. Nosso primeiro encontro. A feira, o pastel… algo tão simples, mas que se tornou o dia mais importante da minha vida. Porque foi ali que eu vi o seu sorriso de perto.
 
-Depois disso, cada encontro, cada saída, cada conversa só confirmou o que eu já sentia. Tocamos no assunto de algo sério, eu conheci seus pais, fomos construindo algo de verdade… com calma, com respeito, com carinho. E o nosso primeiro beijo… depois de tantos dias criando expectativa… no Shopping Metrô Itaquera, no Jeronimo Burger… foi como se o mundo tivesse parado por alguns segundos. Ali eu tive certeza: era você.
+            Depois disso, cada encontro só confirmou o que eu já sentia. E o nosso primeiro beijo… foi como se o mundo tivesse parado por alguns segundos. Ali eu tive certeza: era você.
         </p>
 
         <p>
-            Hoje eu me sinto apaixonado, completo, realizado. Você trouxe cor para os meus dias, trouxe paz para o meu coração e um sorriso constante para o meu rosto. Amar você é fácil. Estar com você é leve. Pensar em você é inevitável.
+            Hoje eu me sinto apaixonado, completo, realizado.
 
-E é por tudo isso que, nesse dia 14 de março, eu estou aqui, com o coração aberto e cheio de amor, para te perguntar:
+            E é por tudo isso que eu estou aqui, com o coração aberto e cheio de amor, para te perguntar:
 
             <strong>Você aceita namorar comigo?</strong>
 
-            Eu prometo cuidar de você, te respeitar, te apoiar nos dias difíceis e celebrar cada conquista ao seu lado. Prometo continuar escolhendo você todos os dias.
+            <br><br>
 
-Porque, entre todas as respostas que eu poderia ter dado naquela foto… a melhor decisão da minha vida foi ter puxado assunto com você.
+            <button id="btnSim">💍 SIM, eu aceito 💖</button>
+            <div id="resposta"></div>
 
-Eu te amo. ❤️
+            <br><br>
+
+            Eu prometo cuidar de você, te respeitar, te apoiar nos dias difíceis e celebrar cada conquista ao seu lado.
+
+            Eu te amo. ❤️
         </p>
     </section>
 
@@ -72,9 +76,10 @@ Eu te amo. ❤️
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 🎶 Botão -->
+    <!-- 🎶 Botão Música -->
     <button id="btnMusica">🎵 Tocar Música</button>
 
+    <!-- SCRIPT MÚSICA -->
     <script>
         const audio = document.getElementById("musica");
         const botao = document.getElementById("btnMusica");
@@ -90,8 +95,46 @@ Eu te amo. ❤️
         });
     </script>
 
-</body>
+    <!-- SCRIPT PEDIDO + CONFETE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const btnSim = document.getElementById("btnSim");
+            const resposta = document.getElementById("resposta");
+
+            btnSim.addEventListener("click", () => {
+
+                resposta.innerHTML = "💖 Agora oficialmente somos NAMORADOS 💖";
+                btnSim.style.display = "none";
+
+                for (let i = 0; i < 100; i++) {
+                    criarConfete();
+                }
+
+            });
+
+            function criarConfete() {
+                const confete = document.createElement("div");
+                confete.classList.add("confete");
+
+                confete.style.left = Math.random() * 100 + "vw";
+                confete.style.backgroundColor =
+                    `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+                confete.style.animationDuration =
+                    (Math.random() * 2 + 2) + "s";
+
+                document.body.appendChild(confete);
+
+                setTimeout(() => {
+                    confete.remove();
+                }, 3000);
+            }
+
+        });
+    </script>
+
+</body>
 </html>
 
 
