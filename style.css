@@ -40,7 +40,7 @@ p {
 }
 
 /* Card das fotos */
-.foto {
+.imagens {
     width: 100%;
     max-width: 280px;
     height: 320px;
@@ -165,3 +165,4 @@ footer {
     }
 
 }
+
